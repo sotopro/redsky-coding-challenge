@@ -2,6 +2,7 @@
 // src/lib/index.ts
 export type { User, UserActions } from "$lib/types";
 
+export { default as Button } from "$lib/components/Button.svelte";
 export { default as CreateUserModal } from "$lib/components/CreateUserModal.svelte";
 export { default as DeleteUserModal } from "$lib/components/DeleteUserModal.svelte";
 export { default as EditUserModal } from "$lib/components/EditUserModal.svelte";

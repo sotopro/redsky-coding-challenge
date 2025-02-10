@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Modal, modalStore } from '$lib';
+  import { Button, Modal, modalStore } from '$lib';
   import type { User } from '$lib/types';
 
   $: userData = $modalStore.userData as User
@@ -69,19 +69,18 @@
     </div>
 
     <div class="flex justify-end gap-4 mt-6">
-      <button
-        type="button"
+      <Button
+        variant="outline"
         on:click={() => modalStore.close()}
-        class="px-4 py-2 border border-red-600 text-red-600 rounded hover:bg-red-50"
       >
         CANCEL
-      </button>
-      <button
+      </Button>
+      <Button
         type="submit"
-        class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+        variant="solid"
       >
         SAVE
-      </button>
+      </Button>
     </div>
   </form>
 </Modal>

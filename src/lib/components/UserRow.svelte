@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { User, UserActions } from '$lib/types'
+  import { Button } from '$lib';
+  import type { User, UserActions } from '$lib/types';
   
   export let user: User
   export let handleEditUser: UserActions['handleEditUser']
@@ -18,19 +19,21 @@
   <td class="p-4">{user.lastName}</td>
   <td class="p-4">{user.email}</td>
   <td class="p-4">
-    <button
+    <Button
+      variant="solid"
+      size="sm"
       on:click={() => handleEditUser(user.id)}
-      class="bg-red-600 text-white px-2 py-2.5 hover:bg-red-700 transition-colors"
     >
       EDIT
-    </button>
+    </Button>
   </td>
   <td class="p-4">
-    <button
+    <Button
+      variant="solid"
+      size="sm"
       on:click={() => handleDeleteUser(user.id)}
-      class="bg-red-600 text-white px-2 py-2.5 hover:bg-red-700 transition-colors"
     >
       DELETE
-    </button>
+    </Button>
   </td>
 </tr>
