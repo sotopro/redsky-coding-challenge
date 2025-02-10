@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Header, UserList } from "$lib";
+  import { CreateUserModal, DeleteUserModal, EditUserModal, Header, modalStore, UserList } from "$lib";
 
 
   type User = {
@@ -42,17 +42,21 @@
   ]
 
   function handleCreateUser() {
-    // Implement create user logic
-    console.log('Create user clicked')
+    modalStore.open('create')
   }
 
   function handleEditUser(id: number) {
-    // Implement edit user logic
-    console.log('Edit user:', id)
+    const user = users.find(u => u.id === id)
+    if (user) {
+      modalStore.open('edit', user)
+    }
   }
 
   function handleDeleteUser(id: number) {
-    users = users.filter(user => user.id !== id)
+    const user = users.find(u => u.id === id)
+    if (user) {
+      modalStore.open('delete', user)
+    }
   }
 </script>
 
@@ -60,3 +64,13 @@
   <Header onCreateUser={handleCreateUser} />
   <UserList {users} {handleEditUser} {handleDeleteUser} />
 </div>
+
+{#if $modalStore.isOpen}
+  {#if $modalStore.type === 'create'}
+    <CreateUserModal />
+  {:else if $modalStore.type === 'edit'}
+    <EditUserModal />
+  {:else if $modalStore.type === 'delete'}
+    <DeleteUserModal />
+  {/if}
+{/if}
