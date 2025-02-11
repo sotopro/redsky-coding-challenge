@@ -2,7 +2,7 @@
   export let onCreateUser: () => void;
 </script>
 
-<header class="flex flex-col pt-32">
+<header class="flex flex-col pt-20">
     <h1 class="text-5xl tracking-wider weight-400">
     REDSKY CODING CHALLENGE
     </h1>
