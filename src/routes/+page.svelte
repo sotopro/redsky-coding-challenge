@@ -1,45 +1,17 @@
 <script lang="ts">
   import { CreateUserModal, DeleteUserModal, EditUserModal, Header, modalStore, UserList } from "$lib";
+  import { usersStore } from '$lib/stores/users';
+  import { onMount } from 'svelte';
 
+  // Obtener el estado del store
+  $: users = $usersStore.users
+  $: loading = $usersStore.loading
+  $: error = $usersStore.error
 
-  type User = {
-    id: number
-    avatar: string
-    firstName: string
-    lastName: string
-    email: string
-  }
-
-  let users: User[] = [
-    {
-      id: 1,
-      avatar: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png",
-      firstName: "Rianna",
-      lastName: "Wells",
-      email: "R_Wells022@hotmail.com"
-    },
-    {
-      id: 2,
-      avatar: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png",
-      firstName: "Harpreet",
-      lastName: "Gardner",
-      email: "harpheart5@gmail.com"
-    },
-    {
-      id: 3,
-      avatar: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png",
-      firstName: "Alec",
-      lastName: "Kirk",
-      email: "lordaleck@gmail.com"
-    },
-    {
-      id: 4,
-      avatar: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png",
-      firstName: "Elissa",
-      lastName: "Schmitt",
-      email: "ES05868@yahoo.com"
-    }
-  ]
+  // Cargar usuarios al montar el componente
+  onMount(() => {
+    usersStore.fetchUsers()
+  })
 
   function handleCreateUser() {
     modalStore.open('create')
@@ -62,7 +34,18 @@
 
 <div class="container mx-auto px-4 py-8 max-w-6xl">
   <Header onCreateUser={handleCreateUser} />
-  <UserList {users} {handleEditUser} {handleDeleteUser} />
+  {#if error}
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+      {error}
+    </div>
+  {/if}
+  {#if loading}
+    <div class="flex justify-center items-center py-8">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
+    </div>
+  {:else}
+    <UserList {users} {handleEditUser} {handleDeleteUser} />
+  {/if}
 </div>
 
 {#if $modalStore.isOpen}
