@@ -11,4 +11,11 @@ export { default as Modal } from "$lib/components/Modal.svelte";
 export { default as UserList } from "$lib/components/UserList.svelte";
 export { default as UserRow } from "$lib/components/UserRow.svelte";
 
+export {
+  createUser,
+  deleteUser,
+  fetchUsers,
+  updateUser,
+} from "$lib/services/api";
 export { modalStore } from "$lib/stores/modal";
+export { usersStore } from "$lib/stores/users";
