@@ -1,38 +1,92 @@
-# sv
+# RedSky Coding Challenge (Svelte)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a SvelteKit project for the RedSky coding challenge, built with TypeScript, TailwindCSS, and Vite.
 
-## Creating a project
+## Project Structure
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```
+redsky-coding-challenge/
+│── src/
+│   ├── lib/
+│   │   ├── components/        # UI Components
+│   │   ├── stores/            # Svelte stores
+│   │   ├── services/          # API calls
+│   │   ├── types.ts           # Type definitions
+│   │   ├── index.ts           # Export module
+│   ├── routes/                # Svelte pages
+│   ├── app.html               # Main HTML file
+│   ├── app.css                # Global styles
+│   ├── app.d.ts               # TypeScript definitions
+│── static/                    # Static assets
+│── tests/                     # Unit & integration tests
+│── package.json               # Project dependencies
+│── tsconfig.json              # TypeScript configuration
+│── svelte.config.js           # SvelteKit configuration
+│── tailwind.config.js         # TailwindCSS configuration
+│── vite.config.ts             # Vite configuration
+│── README.md                  # Project documentation
 ```
 
-## Developing
+## Installation
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Clone the repository:
 
-```bash
+   ```sh
+   git clone https://github.com/sotopro/redsky-coding-challenge.git
+   cd redsky-coding-challenge
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+## Running the Project
+
+### Development Mode
+
+```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Build the Project
 
-To create a production version of your app:
-
-```bash
+```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+### Preview Production Build
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+### Run Type Checking
+
+```sh
+npm run check
+```
+
+### Run Type Checking in Watch Mode
+
+```sh
+npm run check:watch
+```
+
+## API Endpoints
+
+| Method | Endpoint       | Description       |
+| ------ | -------------- | ----------------- |
+| GET    | /api/users     | Get all users     |
+| POST   | /api/users     | Create a new user |
+| PUT    | /api/users/:id | Update a user     |
+| DELETE | /api/users/:id | Delete a user     |
+
+## Technologies Used
+
+- **SvelteKit**: Frontend framework
+- **TypeScript**: Type safety
+- **TailwindCSS**: Styling framework
+- **Vite**: Build tool
+- **Lucide-Svelte**: Icon set
+- **Zod**: Schema validation
