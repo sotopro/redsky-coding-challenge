@@ -8,6 +8,8 @@ export { default as DeleteUserModal } from "$lib/components/DeleteUserModal.svel
 export { default as EditUserModal } from "$lib/components/EditUserModal.svelte";
 export { default as Header } from "$lib/components/Header.svelte";
 export { default as Modal } from "$lib/components/Modal.svelte";
+export { default as Toast } from "$lib/components/Toast.svelte";
+export { default as ToastContainer } from "$lib/components/ToastContainer.svelte";
 export { default as UserList } from "$lib/components/UserList.svelte";
 export { default as UserRow } from "$lib/components/UserRow.svelte";
 
@@ -18,4 +20,5 @@ export {
   updateUser,
 } from "$lib/services/api";
 export { modalStore } from "$lib/stores/modal";
+export { toastStore } from "$lib/stores/toast";
 export { usersStore } from "$lib/stores/users";

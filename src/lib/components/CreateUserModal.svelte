@@ -1,10 +1,7 @@
 <script lang="ts">
-  import { Button, Modal } from '$lib';
-  import { modalStore } from '$lib/stores/modal';
-  import { usersStore } from '$lib/stores/users';
+  import { Button, Modal, modalStore, toastStore, usersStore } from '$lib';
   import { z } from 'zod';
-
-  // Definir el esquema de validación
+  
   const userSchema = z.object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
@@ -38,7 +35,7 @@
         email: validatedData.email,
         avatar: validatedData.avatarUrl ? validatedData.avatarUrl : ''
       })
-      
+      toastStore.add('User created successfully', 'success');
       modalStore.close()
     } catch (e) {
       if (e instanceof z.ZodError) {
@@ -46,6 +43,7 @@
           errors[err.path[0] as keyof FormData] = err.message
         })
       } else {
+        toastStore.add('Error creating user', 'error');
         submitError = e instanceof Error ? e.message : 'Error creating user'
       }
     } finally {
@@ -63,7 +61,7 @@
     {/if}
 
     <div>
-      <label for="firstName" class="block text-sm font-medium text-gray-700">FIRST NAME</label>
+      <label for="firstName" class="block text-sm font-semibold text-gray-700">FIRST NAME</label>
       <input
         type="text"
         id="firstName"
@@ -77,7 +75,7 @@
     </div>
 
     <div>
-      <label for="lastName" class="block text-sm font-medium text-gray-700">LAST NAME</label>
+      <label for="lastName" class="block text-sm font-semibold text-gray-700">LAST NAME</label>
       <input
         type="text"
         id="lastName"
@@ -91,7 +89,7 @@
     </div>
 
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700">EMAIL ADDRESS</label>
+      <label for="email" class="block text-sm font-semibold text-gray-700">EMAIL ADDRESS</label>
       <input
         type="email"
         id="email"
@@ -105,7 +103,7 @@
     </div>
 
     <div>
-      <label for="avatarUrl" class="block text-sm font-medium text-gray-700">AVATAR IMAGE LINK</label>
+      <label for="avatarUrl" class="block text-sm font-semibold text-gray-700">AVATAR IMAGE LINK</label>
       <input
         type="url"
         id="avatarUrl"

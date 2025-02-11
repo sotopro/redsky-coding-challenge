@@ -16,8 +16,8 @@
   };
   
   const variantClasses = {
-    solid: "bg-red-600 text-white hover:bg-red-700",
-    outline: "border-2 border-red-600 text-red-600 hover:bg-red-50"
+    solid: "text-white hover:bg-red-700 bg-(--color-primary)",
+    outline: "border-2 border-(--color-primary) text-red-600 hover:bg-red-50"
   };
   
   $: classes = [

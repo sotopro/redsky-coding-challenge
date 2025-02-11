@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { Button, Modal } from '$lib';
-  import { modalStore } from '$lib/stores/modal';
-  import { usersStore } from '$lib/stores/users';
-  import type { User } from '$lib/types';
+  import { Button, Modal, modalStore, toastStore, usersStore } from '$lib';
+  import type { User } from "$lib/types";
   import { z } from 'zod';
 
   const userSchema = z.object({
@@ -42,6 +40,7 @@
       };
       
       await usersStore.updateUser(userData.id, updatedUser);
+      toastStore.add('User updated successfully', 'success');
       modalStore.close();
     } catch (e) {
       if (e instanceof z.ZodError) {
@@ -49,6 +48,7 @@
           errors[err.path[0] as keyof FormData] = err.message;
         });
       } else {
+        toastStore.add('Error updating user', 'error');
         submitError = e instanceof Error ? e.message : 'Error updating user';
       }
     } finally {

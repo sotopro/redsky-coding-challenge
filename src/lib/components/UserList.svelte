@@ -7,19 +7,19 @@
   export let handleDeleteUser: UserActions['handleDeleteUser']
 </script>
 
-<div class="bg-red-600 text-white px-4 py-2">
+<div class="text-white font-semibold px-4 py-2 bg-(--color-primary)">
     <h2> 
         USER LIST
     </h2>
 </div>
 
-<table class="w-full border border-red-600">
+<table class="w-full">
   <thead>
     <tr class="bg-white border-b border-gray-300">
-      <th class="text-left px-4 py-5">AVATAR</th>
-      <th class="text-left px-4 py-5">FIRST NAME</th>
-      <th class="text-left px-4 py-5">LAST NAME</th>
-      <th class="text-left px-4 py-5">EMAIL ADDRESS</th>
+      <th class="text-left px-4 py-5 font-semibold">AVATAR</th>
+      <th class="text-left px-4 py-5 font-semibold">FIRST NAME</th>
+      <th class="text-left px-4 py-5 font-semibold">LAST NAME</th>
+      <th class="text-left px-4 py-5 font-semibold">EMAIL ADDRESS</th>
       <th class="px-4 py-5" colspan="2"></th>
     </tr>
   </thead>

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Button } from "$lib";
+
   export let onCreateUser: () => void;
 </script>
 
@@ -8,11 +10,12 @@
     </h1>
     <div class="border-b border-gray-200 pt-2"></div>
     <div class="flex flex-row justify-end pt-10 pb-6">
-    <button
+    <Button
         on:click={onCreateUser}
-        class="bg-red-600 text-white px-6 py-2 rounded float-right mb-4 hover:bg-red-700 transition-colors"
+        variant="solid"
+        size="sm"
     >
         CREATE NEW USER
-    </button>
+    </Button>
     </div>
 </header>

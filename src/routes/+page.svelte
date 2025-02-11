@@ -1,14 +1,12 @@
 <script lang="ts">
-  import { CreateUserModal, DeleteUserModal, EditUserModal, Header, modalStore, UserList } from "$lib";
+  import { CreateUserModal, DeleteUserModal, EditUserModal, Header, modalStore, ToastContainer, UserList } from "$lib";
   import { usersStore } from '$lib/stores/users';
   import { onMount } from 'svelte';
 
-  // Obtener el estado del store
   $: users = $usersStore.users
   $: loading = $usersStore.loading
   $: error = $usersStore.error
 
-  // Cargar usuarios al montar el componente
   onMount(() => {
     usersStore.fetchUsers()
   })
@@ -57,3 +55,5 @@
     <DeleteUserModal />
   {/if}
 {/if}
+
+<ToastContainer />

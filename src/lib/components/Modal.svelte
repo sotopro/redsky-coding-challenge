@@ -14,14 +14,12 @@
   }
 
   function handleOverlayClick(event: MouseEvent) {
-    // Solo cerrar si se hace clic en el overlay, no en el contenido
     if (event.target === event.currentTarget) {
       modalStore.close();
     }
   }
 
   onMount(() => {
-    // Enfocar el modal cuando se abre
     modalElement?.focus();
     return () => {
       document.removeEventListener("keydown", handleKeydown);
@@ -52,7 +50,7 @@
       transition:scale
       tabindex="-1"
     >
-      <div class="bg-red-600 text-white px-6 py-4 rounded-t-lg">
+      <div class="text-white bg-(--color-primary) px-6 py-4 rounded-t-lg">
         <h2 id="modal-title" class="text-xl font-semibold">{title}</h2>
       </div>
       <div class="p-6">

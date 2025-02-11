@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { Button, Modal } from '$lib';
-  import { modalStore } from '$lib/stores/modal';
-  import { usersStore } from '$lib/stores/users';
+  import { Button, Modal, modalStore, toastStore, usersStore } from '$lib';
   import type { User } from '$lib/types';
 
   $: userData = $modalStore.userData as User;
@@ -14,8 +12,10 @@
       deleting = true;
       error = null;
       await usersStore.deleteUser(userData.id);
+      toastStore.add('User deleted successfully', 'success');
       modalStore.close();
     } catch (e) {
+      toastStore.add('An error occurred while deleting the user', 'error');
       error = e instanceof Error ? e.message : 'An error occurred while deleting the user';
     } finally {
       deleting = false;
